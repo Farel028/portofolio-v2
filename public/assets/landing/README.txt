@@ -1,0 +1,1 @@
+Put hero image as landing-bg.jpeg

@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { @apply bg-black text-white antialiased; }
+
+.intro-overlay { position: fixed; inset: 0; z-index: 6000; background: #000; display:flex; align-items:center; justify-content:center; }
+.intro-logo { font-weight: 800; letter-spacing: -0.02em; font-size: clamp(2.5rem, 6vw, 5rem); opacity: 0; }
+
+.hero-bg { background-image: url("/assets/landing/landing-bg.jpeg"); background-size: cover; background-position: center; }
