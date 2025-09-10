@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   motion,
   AnimatePresence,
@@ -29,6 +29,23 @@ export default function FloatingNavbar() {
     { name: "Projects", href: "#projects", icon: <IconCode size={18} /> },
   ];
 
+  const [active, setActive] = useState("home");
+
+  useEffect(() => {
+    const ids = ["home", "experience", "projects"];
+    const observers = ids.map((id) => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const ob = new IntersectionObserver(
+        ([entry]) => entry.isIntersecting && setActive(id),
+        { rootMargin: "-45% 0px -50% 0px", threshold: 0.01 }
+      );
+      ob.observe(el);
+      return ob;
+    });
+    return () => observers.forEach((o) => o && o.disconnect());
+  }, []);
+
   return (
     // WRAPPER PENUH LEBAR VIEWPORT → center pakai flex
     <div
@@ -52,8 +69,10 @@ export default function FloatingNavbar() {
               <li key={it.href}>
                 <a
                   href={it.href}
-                  className="flex items-center gap-2 rounded-full px-3 py-2 text-sm
-                             hover:bg-white/10 transition-colors"
+                  className={`flex items-center gap-2 rounded-full px-3 py-2 text-sm transition-colors
++             hover:bg-white/10 ${
+                    active === it.href.slice(1) ? "bg-white/10" : ""
+                  }`}
                 >
                   <span className="sm:hidden">{it.icon}</span>
                   <span className="hidden sm:block">{it.name}</span>

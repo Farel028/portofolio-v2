@@ -97,8 +97,11 @@ export default function Page() {
       {/* Home / About (center beneran) */}
       <section
         id="home"
-        className="relative min-h-[100svh] hero-bg grid place-items-center"
+        className="landing relative min-h-[100svh] hero-bg grid place-items-center"
       >
+        <div className="asteroid"></div>
+        <div className="asteroid"></div>
+        <div className="asteroid"></div>
         {/* gradient bawah biar depth */}
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-neutral-950   to-transparent" />
 

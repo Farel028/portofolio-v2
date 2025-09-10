@@ -2,11 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-body { @apply bg-black text-white antialiased; }
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  @apply bg-black text-white antialiased;
+}
 
-.intro-overlay { position: fixed; inset: 0; z-index: 6000; background: #000; display:flex; align-items:center; justify-content:center; }
-.intro-logo { font-weight: 800; letter-spacing: -0.02em; font-size: clamp(2.5rem, 6vw, 5rem); opacity: 0; }
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 6000;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.intro-logo {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  opacity: 0;
+}
 
-.hero-bg { background-image: url("/assets/landing/landing-bg.jpeg"); background-size: cover; background-position: center; }
+.hero-bg {
+  background-image: url("/assets/landing/landing-bg.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.landing {
+  overflow: hidden;
+}
+
+.landing .asteroid {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 300px;
+  height: 1px;
+  transform: rotate(-135deg);
+  background-image: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+  animation: meteor 7s linear infinite;
+}
+.landing .asteroid:nth-child(2) {
+  right: 90%;
+  animation-delay: 1s;
+}
+.landing .asteroid:nth-child(3) {
+  right: 35%;
+  animation-delay: 2s;
+}
+.landing .asteroid::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: -2px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 15px 3px #fff;
+}
+@keyframes meteor {
+  0% {
+    opacity: 1;
+    margin-top: -300px;
+    margin-left: -300px;
+  }
+  12% {
+    opacity: 0;
+  }
+  15% {
+    margin-top: 300px;
+    margin-right: -600px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
