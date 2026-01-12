@@ -20,6 +20,14 @@ const experiences = [
 
 const projects = [
   {
+    title: "CourtEase",
+    description:
+      "Menggunakan nextjs 16, supabase, dan midtrans sebagai payment gateway",
+    liveUrl: "https://courtease-rpl.vercel.app",
+    poster: "/photos/courtease.png",
+    codeUrl: "https://github.com/Farel028/h-4",
+  },
+  {
     title: "Portofolio V1",
     description: "Menggunakan HTML, CSS, JS basic",
     liveUrl: "https://farelas.netlify.app",
@@ -62,7 +70,7 @@ export default function Page() {
     tl.fromTo(
       logoRef.current,
       { opacity: 0 },
-      { opacity: 1, duration: 1.4, ease: "power4.out" }
+      { opacity: 1, duration: 1.4, ease: "power4.out" },
     );
     tl.to(logoRef.current, {
       xPercent: isMobile ? 2000 : 1300,
@@ -79,7 +87,7 @@ export default function Page() {
           overlayRef.current.style.display = "none";
         },
       },
-      "<"
+      "<",
     );
     return () => tl.kill();
   }, []);
@@ -91,10 +99,8 @@ export default function Page() {
           FAREL AS
         </h1>
       </div>
-
       <FloatingNavbar />
-
-      {/* Home / About (center beneran) */}
+      {/* Home / Landing */}
       <section
         id="home"
         className="landing relative min-h-[100svh] hero-bg grid place-items-center"
@@ -154,7 +160,6 @@ export default function Page() {
           </ul>
         </div>
       </section>
-
       {/* ===== Projects ===== */}
       <section id="projects" className="py-24 bg-neutral-950/90">
         <div className="container mx-auto px-6 max-w-6xl">
@@ -217,7 +222,6 @@ export default function Page() {
           </div>
         </div>
       </section>
-
       {/* ===== Video Player Overlay ===== */}
       <VideoPlayer
         open={Boolean(preview)}
@@ -225,7 +229,6 @@ export default function Page() {
         title="Project preview"
         onClose={() => setPreview(null)}
       />
-
       <footer className="py-10 text-center text-white/50 text-sm bg-neutral-950">
         © {new Date().getFullYear()} Farel AS
       </footer>
